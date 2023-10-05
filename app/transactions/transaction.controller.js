@@ -37,6 +37,3 @@ function sumOfTransactions(req, res, next) {
 }
 
 
-function getLastTransactionInDb() {
-
-}

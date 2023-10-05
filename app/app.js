@@ -12,7 +12,7 @@ const port = process.env.PORT
 
 cron.schedule('*/3 * * * *', () => {
     console.log('started fetching data!');
-fetchTransactions() 
+    fetchTransactions()
 });
 
 app.listen(port, function () {

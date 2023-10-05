@@ -89,7 +89,7 @@ async function sumOfTransactions(wallet_address) {
                 }
             }
         ]
-        console.log(wallet_address);
+    console.log(wallet_address);
     if (wallet_address) {
         agr_pipeline.push({
             $match: { _id: wallet_address }
