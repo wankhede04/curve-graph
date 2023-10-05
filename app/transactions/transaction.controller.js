@@ -13,8 +13,8 @@ router.get('/sum', sumOfTransactions);
 function fetchTransactions(req, res, next) {
 
     let wallet_address = req.query.wallet_address
-    let limit = req.params['limit']
-    let skip = req.params['skip']
+    let limit = req.query.limit
+    let skip = req.query.skip
 
     return transactionService.queryTransaction(limit, skip, wallet_address).then((response) => {
         return res.json({ data: response })

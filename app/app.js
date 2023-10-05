@@ -10,7 +10,7 @@ app.use('/v1', require('./transactions/transaction.controller'));
 
 const port = process.env.PORT
 
-cron.schedule('*/3 * * * *', () => {
+cron.schedule('* * * * *', () => {
     console.log('started fetching data!');
     fetchTransactions()
 });
