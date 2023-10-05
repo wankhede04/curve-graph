@@ -1,25 +1,28 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const config = process.env
+
+mongoose.connect(config.MONGO_URL, { user: config.MONGO_USER, pass: config.MONGO_PASS }).then(() => {
+    console.log("connected to mongo!");
+})
+
 const schema = new Schema({
-    username: ,
-    email: { type: String, unique: true, required: true },
-    hash: { type: String, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    identifier: { type: Number, default: 0, required: true },
-    createdDate: { type: Date, default: Date.now },
-});
-
-schema.set('toJSON', {
-    virtuals: true,
-    versionKey: false,
-    transform: function (doc, ret) {
-        delete ret._id;
-        delete ret.hash;
+    from: String,
+    to: String,
+    id: String,
+    amountUSD: {
+        type: Number,
+        set: v => Number.parseFloat(v)
     },
+    timestamp: {
+        type: Number,
+        set: v => Number.parseInt(v)
+    }
+
 });
 
-module.exports = mongoose.model('User', schema);
 
+const Transactions = mongoose.model('Transaction', schema);
 
+module.exports = Transactions;
